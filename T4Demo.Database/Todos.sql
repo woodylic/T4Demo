@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Todos]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Title] NVARCHAR(200) NULL, 
+    [Description] NVARCHAR(MAX) NULL, 
+    [State] BIT NOT NULL DEFAULT 0
+)
