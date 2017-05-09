@@ -1,0 +1,46 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+// Generated from template
+// DO NOT change manually
+
+using System;
+using System.Collections.Generic;
+
+namespace T4Ddemo.Entity
+{
+	class Greeting
+	{
+		public static Dictionary<String, String> GetGlobalGreetings()
+        {
+            var result = new Dictionary<String, String>();			
+<#
+var source = this.InitGreetings();
+for(int i=0; i<2; i++) 
+{
+#>
+            result.Add("<#= source[i,0] #>", "<#= source[i,1] #>");
+<#
+}
+#>
+            return result;
+        }
+	}
+}
+
+<#+
+	public string[,] InitGreetings()
+    {
+        var array = new string[,]
+            {
+                { "en-US", "Good morning!" },
+                { "zh-CN", "早上好！" }
+            };            
+
+        return array;
+    }
+#>
